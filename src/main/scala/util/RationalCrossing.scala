@@ -150,6 +150,7 @@ class RationalCrossingFull[T <: Data](gen: T, direction: RationalDirection = Sym
 
   source.io.enq <> io.enq
   io.deq <> sink.io.deq
+  sink.io.enq <> source.io.deq
 }
 
 object ToRational
