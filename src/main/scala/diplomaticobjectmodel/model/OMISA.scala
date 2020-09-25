@@ -13,6 +13,7 @@ case object A extends OMExtensionType
 case object F extends OMExtensionType
 case object D extends OMExtensionType
 case object C extends OMExtensionType
+case object B extends OMExtensionType
 case object U extends OMExtensionType
 case object S extends OMExtensionType
 
@@ -40,6 +41,7 @@ case class OMISA(
   f: Option[OMSpecification],
   d: Option[OMSpecification],
   c: Option[OMSpecification],
+  b: Option[OMSpecification] = None,
   v: Option[OMVectorExtension] = None,
   u: Option[OMSpecification],
   s: Option[OMSpecification],
@@ -104,6 +106,7 @@ object OMISA {
       c = coreParams.useCompressed.option(isaExtSpec(C, " 2.0")),
       u = (coreParams.hasSupervisorMode || coreParams.useUser).option(isaExtSpec(U, "1.10")),
       s = coreParams.hasSupervisorMode.option(isaExtSpec(S, "1.10")),
+      b = coreParams.useBitManip.option(isaExtSpec(B, "0.92")),
       addressTranslationModes = Seq(addressTranslationModes),
       customExtensions = customExtensions
     )
