@@ -1,0 +1,50 @@
+pull_request_rules:
+  - name: automatic merge on CI success and review
+    conditions:
+      - status-success=Check Wit Manifest
+      - status-success=Prepare riscv-tools Cache
+      - status-success=Prepare Verilator Cache
+      - status-success=Check Wake Compilation
+      - status-success=Test (1)
+      - status-success=Test (2)
+      - status-success=Test (3)
+      - status-success=Test (4)
+      - status-success=Test (5)
+      - status-success=Test (6)
+      - status-success=Test (7)
+      - status-success=Test (8)
+      - "#approved-reviews-by>=1"
+      - "#changes-requested-reviews-by=0"
+      - base=master
+      - label="MERGE WITH MERGIFY"
+      - label!="DONT MERGE"
+    actions:
+      merge:
+        method: merge
+        strict: smart
+        strict_method: merge
+        
+  - name: automatic squash and merge on CI success and review
+    conditions:
+      - status-success=Check Wit Manifest
+      - status-success=Prepare riscv-tools Cache
+      - status-success=Prepare Verilator Cache
+      - status-success=Check Wake Compilation
+      - status-success=Test (1)
+      - status-success=Test (2)
+      - status-success=Test (3)
+      - status-success=Test (4)
+      - status-success=Test (5)
+      - status-success=Test (6)
+      - status-success=Test (7)
+      - status-success=Test (8)
+      - "#approved-reviews-by>=1"
+      - "#changes-requested-reviews-by=0"
+      - base=master
+      - label="SQUASH & MERGE WITH MERGIFY"
+      - label!="DONT MERGE"
+    actions:
+      merge:
+        method: squash
+        strict: smart
+        strict_method: merge
